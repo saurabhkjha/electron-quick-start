@@ -9,7 +9,28 @@ const BrowserWindow = electron.BrowserWindow;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+var gh_releases = require('electron-gh-releases')
 
+var options = {
+  repo: 'saurabhkjha/electron-quick-start',
+  currentVersion: app.getVersion()
+}
+var update = new gh_releases(options, function (auto_updater) {
+  // Auto updater event listener
+  auto_updater.on('update-downloaded', function (e, rNotes, rName, rDate, uUrl, quitAndUpdate) {
+    // Install the update
+    quitAndUpdate()
+  })
+})
+
+// Check for updates
+update.check(function (err, status) {
+  if (!err && status) {
+      update.download()
+  } else {
+    console.log('ERROR updating', err)
+  }
+})
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600});

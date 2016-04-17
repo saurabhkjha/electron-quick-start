@@ -4,7 +4,8 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron main.js"
+    "start": "electron main.js",
+    "build": "electron-packager . "
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,11 @@
     "url": "https://github.com/electron/electron-quick-start/issues"
   },
   "homepage": "https://github.com/electron/electron-quick-start#readme",
+   "dependencies": {
+    "electron-gh-releases": "^1.0.1"
+    },
   "devDependencies": {
-    "electron-prebuilt": "^0.37.0"
+    "electron-prebuilt": "^0.37.0",
+    "electron-packager": "5.0.1"
   }
 }
