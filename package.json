@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "build": "electron-packager . "
+    "build": "electron-packager . --platform=win32 --arch=all --overwrite"
   },
   "repository": {
     "type": "git",
